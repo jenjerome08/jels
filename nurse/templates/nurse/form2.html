@@ -1,0 +1,28 @@
+{%  extends 'nurse/main.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+
+body {
+  background: url(../static/images/background.jpg);
+
+}
+</style>
+  
+  
+
+     
+        
+        <p>We are seeking people with vaccinated to serve our world. Fill in the information below to indicate how you would like to become involved.</p>
+
+
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Save person</button>
+  </form>
+
+
+{% endblock %}

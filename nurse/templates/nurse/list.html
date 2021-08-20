@@ -1,0 +1,61 @@
+
+{%  extends 'nurse/main.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+
+body {
+  background: url(../static/images/background.jpg);
+
+}
+</style>
+
+
+
+<div class="wrap">
+  <center>
+<form method="get">
+        
+{{myFilter.form}}
+ 
+   
+  <button class="btn btn-primary" type="submit">Search</button>
+        <i class="fa fa-search"></i>
+     </button>
+     </form>
+</center>
+<br><br>
+ <table id="customers">
+        <tr>
+          <th>Viewer</th>
+          <th>Name</th>
+          <th>Vaccine</th>
+          <th>Injected</th>
+          <th>Status</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+        {% for vaccine in vaccines %}
+          <tr>
+            <td><a class="" href="{% url 'respondent' vaccine.id %}">{{vaccine.id}}</a></td>
+
+            <td>{{vaccine.person}}</td>
+            <td>{{vaccine.vaccines}}</td>
+            <td>{{vaccine.dose}}</td>
+            <td>{{vaccine.status}}</td>
+         
+            <td><a class="btn btn-sm btn-info" href="{% url 'update_vaccine' vaccine.id %}">Update</a></td>
+            <td><a class="btn btn-sm btn-danger" href="{% url 'delete_vaccine' vaccine.id %}">Delete</a></td>
+          </tr>
+        {% endfor %}
+    </table>
+    <br><br>
+<center><button class="button button2"><a href="{% url 'form' %}">Form</a></button></center>
+</div>
+
+
+</div>
+
+{% endblock %}
+

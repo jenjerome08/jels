@@ -1,0 +1,137 @@
+{%  extends 'nurse/main.html' %}
+
+{% block content %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container emp-profile">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="{{ respondent.image.url }}" />
+                            <div class="file btn btn-lg btn-primary">
+                                Change Photo
+                                <input type="file" name="file"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                        {{respondent.name}}
+                                    </h5>
+                                     {% for v in vaccine %}
+                                    <h6>
+                                        {{v.status}}
+                                    </h6>
+                                    <p class="proile-rating">Status : <span>Vaccinated</span></p>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'update_respondent' respondent.id %}">Edit Profile</a>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-work">
+                            <p>VACCINE</p>
+                            <a href="">{{v.vaccines}}</a><br/>
+                            <a href="">{{v.how_many_times_have_you_been_injected_by_vaccine}} time/times</a><br/>
+                            <a href="">{{v.dose}}</a>
+                            <p>Date</p>
+                            <a href="">{{v.date_attended}}</a><br/>
+                            <a href="">{{v.where_did_you_get_the_vaccine}}</a><br/>
+                            <p>Comments</p>
+                            <a href="">{{v.comments}}</a><br/>
+
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>E-Address</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{respondent.email_address}}</p>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Gender</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{respondent.gender}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Age</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{respondent.age}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Phone</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{respondent.contact}}</p>
+                                            </div>
+                                        </div>
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Baranggay</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{respondent.barangay}}</p>
+                                            </div>
+                                        </div>
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                                <label>{{respondent.city}}</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Dasmarinas</p>
+                                            </div>
+                                        </div>
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Street</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{respondent.street}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Zip</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{respondent.zip_code}}</p>
+                                            </div>
+                                        </div>
+                            </div>
+                           
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>           
+        </div>
+{% endblock %}
